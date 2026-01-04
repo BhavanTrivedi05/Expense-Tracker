@@ -1,0 +1,73 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendor List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 900px;
+        }
+        .table {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body class="container mt-4">
+
+<h2 class="mb-3 text-center">Vendor List</h2>
+
+<!-- FIXED: Success/Error messages -->
+<c:if test="${not empty success}">
+    <div class="alert alert-success">${success}</div>
+</c:if>
+<c:if test="${not empty error}">
+    <div class="alert alert-danger">${error}</div>
+</c:if>
+
+<table class="table table-borderless table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- FIXED: Correct iteration (vendorList exists now) -->
+    <c:choose>
+        <c:when test="${not empty vendorList}">
+            <c:forEach var="vendor" items="${vendorList}">
+                <tr>
+                    <td>${vendor.vendorId}</td>
+                    <td>${vendor.title}</td>
+                    <td>
+                        <a href="viewvendor?vendorId=${vendor.vendorId}" class="btn btn-info btn-sm">View</a>
+                        <a href="editvendor?vendorId=${vendor.vendorId}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="deletevendor?vendorId=${vendor.vendorId}" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Are you sure you want to delete this vendor?');">Delete</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <tr>
+                <td colspan="3" class="text-center">No vendors found</td>
+            </tr>
+        </c:otherwise>
+    </c:choose>
+    </tbody>
+</table>
+
+<div class="text-center">
+    <a href="newvendor" class="btn btn-success">Add New Vendor</a>
+    <a href="home" class="btn btn-dark">Back to Dashboard</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
