@@ -64,6 +64,7 @@
             border-radius: 15px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            background: white; /* ADDED */
         }
         .card:hover {
             transform: translateY(-5px);
@@ -91,20 +92,53 @@
             background: rgba(255, 255, 255, 0.3);
         }
         .stat-box {
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 15px;
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-box h6 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .stat-box h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .stat-box small {
+            font-size: 0.85rem;
+            opacity: 0.9;
         }
         .stat-box i {
-            font-size: 2rem;
-            opacity: 0.7;
+            font-size: 3.5rem;
+            opacity: 0.15;
+            position: absolute;
+            right: 15px;
+            top: 15px;
         }
+
+        /* Gradient backgrounds for stat boxes */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .bg-gradient-danger {
+            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+        }
+        .bg-gradient-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #8fd3f4 100%);
+        }
+        .bg-gradient-warning {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
         footer {
             text-align: center;
             padding: 15px;
